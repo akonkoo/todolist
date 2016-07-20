@@ -1,0 +1,72 @@
+
+.task-list{
+    width: 23%;
+    height: 400px;
+    height: auto;
+    min-height: 400px;
+    border-radius: 5px;
+    background-color: #F2F2F2;
+	float: left;
+	margin: 5px;
+	padding-bottom: 15px;
+}
+
+h2{
+	font-weight: bold;
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.todo_task {
+	margin: 5px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #FFF;
+}
+
+.todo_header{
+	font-weight: bold;
+	font-size: 24px;
+}
+.todo_remove img{
+	width: 20px;
+	cursor: pointer;
+    float: right;
+}
+
+.todo_date {
+	font-size: small;
+	font-style: italic;
+}
+
+input, textarea{
+	height: 60px;
+	width: 90%;
+	margin: 5px 5px;
+/*	padding: 0;
+	border: 0;*/
+/*	color: #000;*/
+}
+
+input {
+	height: 30px;
+}
+
+input.btn{
+	margin-bottom: 30px;
+}
+
+#delete-div {
+	border: 3px dashed #000;
+	border-radius: 5px;
+	margin: 10px;
+	width: 90%;
+	height: 75px;
+	line-height: 75px;
+	text-align: center;
+	background-color: #FFF;
+}
+
+.hidden {
+	display: none;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <title>To do list</title>
+</head>
+<body>
+	<div class="task-list" id="pending">
+        <h2>待处理</h2>
+        <div class="todo_task" id="223">
+            <div class="todo_header">hello</div>
+            <div class="todo_date">03/04/2022</div>
+            <div class="todo_description">World</div>
+        </div>
+    </div>
+
+    <div class="task-list" id="inProgress">
+        <h2>进行中</h2>
+    </div>
+
+    <div class="task-list" id="completed">
+        <h2>已完成</h2>
+    </div>
+
+	<div class="task-list">
+        <h2>添加项目</h2>
+        <form id="todo-form">
+            <input type="text" class="addTitle" placeholder="标题" />
+            <textarea placeholder="内容" class="addDescriptions"></textarea>
+            <input type="text" placeholder="截止日期 (月/日/年)" id="datepicker" class="addDate"/>
+            <input type="button" class="btn btn-primary" value="添加项目" id="addItem"/>
+        </form>
+
+        <input type="button" class="btn btn-primary" value="清空全部项目" />
+        
+        <div id="delete-div" class="hidden">拖动到这里删除</div>   
+    </div>    
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+        console.log("This is a test");
+  //       mut = new Mytodolist();
+		// mut.generateElement({
+  //           id: '123',
+  //           code: '1',
+  //           title: 'wo',
+  //           date: '24354',
+  //           description: 'dan ndaoign '
+  //       });
+  //       mut.removeElement({
+  //           id: '123'
+  //       });
+        new Mytodolist();
+	})
+</script>
+</html>
