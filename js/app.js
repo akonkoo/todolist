@@ -98,6 +98,16 @@ Mytodolist.prototype.generateElement = function(arg) {
 	}).appendTo(wrapper);
 
 	wrapper.appendTo(parent);
+
+	wrapper.draggable({
+		opacity: 0.5,
+		start: function() {
+			$('#delete-div').show('fast');
+		},
+		stop: function() {
+			$('#delete-div').hide('fast');
+		}
+	});
 };
 
 Mytodolist.prototype.removeElement = function(arg) {
