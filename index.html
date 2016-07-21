@@ -10,6 +10,7 @@
 	<div class="task-list" id="pending">
         <h2>待处理</h2>
         <div class="todo_task" id="223">
+            <div class="todo_remove"><img src="./delete-icon.png"></div>
             <div class="todo_header">hello</div>
             <div class="todo_date">03/04/2022</div>
             <div class="todo_description">World</div>
@@ -43,20 +44,8 @@
 <script type="text/javascript" src="js/jquery-ui/jquery-ui.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-        console.log("This is a test");
-  //       mut = new Mytodolist();
-		// mut.generateElement({
-  //           id: '123',
-  //           code: '1',
-  //           title: 'wo',
-  //           date: '24354',
-  //           description: 'dan ndaoign '
-  //       });
-  //       mut.removeElement({
-  //           id: '123'
-  //       });
-        new Mytodolist();
-	})
+ 	$(document).ready(function(){
+         new Mytodolist();
+ 	})
 </script>
 </html>

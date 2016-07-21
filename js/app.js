@@ -5,10 +5,25 @@ var codes = {
 	"1": "#pending",
 	"2": "#inProgress",
 	"3": "#completed"
-}
+};
+
+data = {};
 
 var Mytodolist = function() {
 	var _this = this;
+
+	_this.data = JSON.parse(localStorage.getItem('todolist')) || {};
+	for (var property in _this.data) {
+		if (_this.data.hasOwnProperty(property)) {
+			_this.generateElement({
+				id: property,
+				code: _this.data[property].code,
+				title: _this.data[property].title,
+				date: _this.data[property].date,
+				description: _this.data[property].description
+			});
+		}
+	};
 
 	$('#datepicker').datepicker();
 
@@ -28,14 +43,24 @@ var Mytodolist = function() {
 		$(this).siblings('.addTitle').val('');
 		$(this).siblings('.addDescriptions').val('');
 		$(this).siblings('.addDate').val('');
+
+		_this.data[id] = {
+			code: '1',
+			title: title,
+			date: date,
+			description: description 
+		};
+		_this.saveDate();
 	});
 
 	$('body').on('click', '.todo_remove', function() {
 		var id = $(this).parent().attr('id');
 		_this.removeElement({
 			id: id
-		})
-	})
+		});
+		delete _this.data[id];
+		_this.saveDate();
+	});
 };
 
 Mytodolist.prototype.generateElement = function(arg) {
@@ -73,8 +98,13 @@ Mytodolist.prototype.generateElement = function(arg) {
 	}).appendTo(wrapper);
 
 	wrapper.appendTo(parent);
-}
+};
 
 Mytodolist.prototype.removeElement = function(arg) {
 	$('#' + arg.id).remove();
-}
+};
+
+Mytodolist.prototype.saveDate = function() {
+	localStorage.setItem('todolist', JSON.stringify(this.data));
+};
+
