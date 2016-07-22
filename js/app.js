@@ -50,7 +50,7 @@ var Mytodolist = function() {
 			date: date,
 			description: description 
 		};
-		_this.saveDate();
+		_this.saveData();
 	});
 
 	$('body').on('click', '.todo_remove', function() {
@@ -59,8 +59,53 @@ var Mytodolist = function() {
 			id: id
 		});
 		delete _this.data[id];
-		_this.saveDate();
+		_this.saveData();
 	});
+
+	$.each(codes, function(index, value) {
+		$(value).droppable({
+			drop: function(event, ui) {
+				var element = ui.helper,
+					id = element.attr('id'),
+					// 获取draggable之后的Object
+					item = _this.data[id];
+				// 删除之前的Object
+				_this.removeElement({
+					id: id,
+				});
+				// 设置新的code
+				item.code = index;
+				// 在新的位置插入Object
+				_this.generateElement({
+					id: id,
+					code: item.code,
+					title: item.title,
+					date: item.date,
+					description: item.description
+				});
+				_this.saveData();
+			}
+		});
+	});
+
+	$('#delete-div').droppable({
+		drop: function(event, ui) {
+			var element = ui.helper,
+				id = element.attr('id');
+			_this.removeElement({
+				id: id,
+			});
+			delete _this.data[id];
+			_this.saveData();
+		}
+	});
+
+	$('#deleteAll').click(function() {
+		$('.todo_task').remove();
+		_this.data = {};
+		_this.saveData();	
+	});
+
 };
 
 Mytodolist.prototype.generateElement = function(arg) {
@@ -114,7 +159,13 @@ Mytodolist.prototype.removeElement = function(arg) {
 	$('#' + arg.id).remove();
 };
 
-Mytodolist.prototype.saveDate = function() {
+Mytodolist.prototype.saveData = function() {
 	localStorage.setItem('todolist', JSON.stringify(this.data));
 };
+
+
+
+$(document).ready(function(){
+	new Mytodolist();
+});
 
